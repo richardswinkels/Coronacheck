@@ -1,0 +1,45 @@
+﻿<Window x:Class="WpfCoronaCheck.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfCoronaCheck"
+        mc:Ignorable="d"
+        Title="CoronaCheck" Height="450" Width="800" MinHeight="250" MinWidth="700">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <ComboBox x:Name="cmbEvents" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" SelectedIndex="0">
+            <ComboBoxItem>Evenementen</ComboBoxItem>
+            <ComboBoxItem>Wedstrijden</ComboBoxItem>
+            <ComboBoxItem>Binnenwedstrijden</ComboBoxItem>
+            <ComboBoxItem>Buitenwedstrijden</ComboBoxItem>
+            <ComboBoxItem>Uitjes</ComboBoxItem>
+            <ComboBoxItem>Museumuitjes</ComboBoxItem>
+            <ComboBoxItem>Bioscoopuitjes</ComboBoxItem>
+        </ComboBox>
+        <ListBox x:Name="lbEvents" ItemsSource="{Binding ICoronaCheckEvenementen}" DisplayMemberPath="Naam" SelectionChanged="LbEvents_SelectionChanged" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" MouseDoubleClick="lbEvents_MouseDoubleClick"/>
+        <StackPanel Grid.Column="5" Grid.Row="1" Grid.RowSpan="3" VerticalAlignment="Center">
+            <TextBlock x:Name="tbCoronaCheckRequired" HorizontalAlignment="Center" FontSize="30" Margin="0, 0, 0, 20"/>
+            <Image x:Name="imgCoronaCheckRequired" Width="100" Height="100" />
+        </StackPanel>
+        <Button x:Name="btnAdd" Grid.Column="1" Grid.Row="5" Click="BtnAdd_Click">Toevoegen</Button>
+        <Button x:Name="btnDelete" Grid.Column="3" Grid.Row="5" Click="BtnDelete_Click">Verwijderen</Button>
+    </Grid>
+</Window>
